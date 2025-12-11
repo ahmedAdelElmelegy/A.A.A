@@ -3,7 +3,7 @@ import 'package:flutter/animation.dart';
 class ColorManager {
   ColorManager._();
   static const Color primary = Color(0xFF3B82F6);
-  static const Color secondary = Color(0xFF0EA5E9);
+  static const Color secondary = Color(0xff1E40AF);
   // Background colors
   static const Color light = Color(0xFFF6F6F6);
   static const Color dark = Color(0xFF272727);

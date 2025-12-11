@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/function/url_function.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CustomBtn extends StatefulWidget {
   const CustomBtn({super.key});
@@ -19,7 +18,9 @@ class _CustomBtnState extends State<CustomBtn> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: isHover ? Color(0xff1E40AF) : ColorManager.primary,
+          backgroundColor: isHover
+              ? ColorManager.secondary
+              : ColorManager.primary,
         ),
         onHover: (value) => setState(() {
           isHover = value;

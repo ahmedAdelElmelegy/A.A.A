@@ -50,8 +50,8 @@ class AppStyle {
     color: ColorManager.white,
     fontFamily: 'Urbanist',
   );
-  static TextStyle f40UrbanistBold = TextStyle(
-    fontSize: 70,
+  static TextStyle f50UrbanistBold = TextStyle(
+    fontSize: 50,
     fontWeight: FontWeight.w700,
     fontFamily: 'Urbanist',
   );

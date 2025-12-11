@@ -11,7 +11,7 @@ class ProjectItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 600,
+      width: 850,
       height: 500,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(

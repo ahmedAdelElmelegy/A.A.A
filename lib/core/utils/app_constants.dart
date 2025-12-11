@@ -57,5 +57,17 @@ class AppConstants {
           'An AI-powered app that summarizes books, answers questions via an AI assistant',
       projectImage: AppImages.project2,
     ),
+    ProjectModel(
+      projectName: 'El Huda',
+      projectDescription:
+          'An Islamic guidance app offering accurate prayer times, Quran access, and smart reminders through a clean and modern UI',
+      projectImage: AppImages.project3,
+    ),
+    ProjectModel(
+      projectName: 'BMi Calculator',
+      projectDescription:
+          'A BMI calculator app that calculates BMI based on user input ',
+      projectImage: AppImages.project4,
+    ),
   ];
 }

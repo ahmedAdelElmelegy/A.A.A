@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
 import 'package:portfolio/core/utils/app_constants.dart';
+import 'package:portfolio/core/utils/app_utils.dart';
 import 'package:portfolio/features/home/presentation/widgets/work_process_item.dart';
 
 class MyWorkProcess extends StatelessWidget {
@@ -10,7 +11,9 @@ class MyWorkProcess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 80),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppUtils.isDesktop(context) ? 80 : 16,
+      ),
       child: Column(
         children: [
           Text(

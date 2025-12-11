@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_utils.dart';
 
 import 'package:portfolio/features/home/presentation/widgets/about_experiance_section.dart';
 import 'package:portfolio/features/home/presentation/widgets/about_image_section.dart';
@@ -9,7 +10,9 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 80),
+      padding: AppUtils.isDesktop(context)
+          ? EdgeInsets.symmetric(horizontal: 80)
+          : EdgeInsets.symmetric(horizontal: 16),
       child: Wrap(
         runSpacing: 50,
         alignment: WrapAlignment.center,

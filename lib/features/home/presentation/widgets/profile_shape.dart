@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/theme/color.dart';
 
 class ProfileShape extends StatelessWidget {
   const ProfileShape({

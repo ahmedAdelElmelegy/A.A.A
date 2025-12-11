@@ -51,24 +51,27 @@ class _HeroSectionState extends State<HeroSection>
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      crossAxisAlignment: WrapCrossAlignment.center,
-      alignment: WrapAlignment.center,
-      spacing: 150,
-      runSpacing: 50,
-      children: [
-        FadeTransition(
-          opacity: fadeAnim,
-          child: SlideTransition(
-            position: slideAnim,
-            child: const HeroHeading(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        alignment: WrapAlignment.center,
+        spacing: 150,
+        runSpacing: 50,
+        children: [
+          FadeTransition(
+            opacity: fadeAnim,
+            child: SlideTransition(
+              position: slideAnim,
+              child: const HeroHeading(),
+            ),
           ),
-        ),
 
-        ProfileShape(fadeAnim: fadeAnim, scaleAnim: scaleAnim),
+          ProfileShape(fadeAnim: fadeAnim, scaleAnim: scaleAnim),
 
-        const SizedBox(height: 32),
-      ],
+          const SizedBox(height: 32),
+        ],
+      ),
     );
   }
 }

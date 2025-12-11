@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/features/home/presentation/widgets/about_section.dart';
+import 'package:portfolio/features/home/presentation/widgets/custom_drawer.dart';
+import 'package:portfolio/features/home/presentation/widgets/footer_section.dart';
 import 'package:portfolio/features/home/presentation/widgets/header.dart';
 import 'package:portfolio/features/home/presentation/widgets/hero_section.dart';
 import 'package:portfolio/features/home/presentation/widgets/my_projects.dart';
@@ -15,10 +17,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   ScrollController pageController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(pageController: pageController),
+      key: scaffoldKey,
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         controller: pageController,
@@ -41,7 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: [
-                  Header(pageController: pageController),
+                  Header(
+                    pageController: pageController,
+                    onMenuTap: () {
+                      scaffoldKey.currentState?.openDrawer();
+                    },
+                  ),
                   SizedBox(height: 120),
                   HeroSection(),
                   SizedBox(height: 50),
@@ -57,7 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
             SkillSection(),
             SizedBox(height: 100),
             MyProjects(),
-            SizedBox(height: 300),
+            SizedBox(height: 100),
+            FooterSection(),
+            // footer
+            // SizedBox(height: 300),
           ],
         ),
       ),
