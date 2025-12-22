@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/utils/app_utils.dart';
 import 'package:portfolio/features/home/data/model/project_model.dart';
-import 'package:portfolio/features/project/presentation/view/widgets/project_image.dart';
+import 'package:portfolio/features/project/presentation/view/widgets/project_image_desktop.dart';
+import 'package:portfolio/features/project/presentation/view/widgets/project_image_tablet_and_mobile.dart';
 import 'package:portfolio/features/project/presentation/view/widgets/project_list_title.dart';
 import 'package:portfolio/features/project/presentation/view/widgets/project_techology_and_feature.dart';
 
@@ -26,7 +27,9 @@ class ProjectBody extends StatelessWidget {
               children: [
                 ProjectListTitle(projectModel: projectModel),
                 SizedBox(height: 24),
-                ProjectImage(projectModel: projectModel),
+                AppUtils.isDesktop(context)
+                    ? ProjectImageDesktop(projectModel: projectModel)
+                    : ProjectImageTabletAndMobile(projectModel: projectModel),
               ],
             ),
           ),

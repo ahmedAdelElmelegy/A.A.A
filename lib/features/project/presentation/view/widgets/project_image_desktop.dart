@@ -3,15 +3,15 @@ import 'package:portfolio/core/widgets/custom_container.dart';
 import 'package:portfolio/features/home/data/model/project_model.dart';
 import 'package:portfolio/features/project/presentation/view/widgets/project_sm_image.dart';
 
-class ProjectImage extends StatefulWidget {
+class ProjectImageDesktop extends StatefulWidget {
   final ProjectModel projectModel;
-  const ProjectImage({super.key, required this.projectModel});
+  const ProjectImageDesktop({super.key, required this.projectModel});
 
   @override
-  State<ProjectImage> createState() => _ProjectImageState();
+  State<ProjectImageDesktop> createState() => _ProjectImageDesktopState();
 }
 
-class _ProjectImageState extends State<ProjectImage> {
+class _ProjectImageDesktopState extends State<ProjectImageDesktop> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _ProjectImageState extends State<ProjectImage> {
               width: 150,
               child: ListView.builder(
                 itemCount: widget.projectModel.smImages.length,
-
+                scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
