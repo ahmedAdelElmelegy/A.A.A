@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
-import 'package:portfolio/features/home/presentation/screens/home_screen.dart';
+import 'package:portfolio/core/router/app_router.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeScreen(),
+      routerConfig: router,
     );
   }
 }

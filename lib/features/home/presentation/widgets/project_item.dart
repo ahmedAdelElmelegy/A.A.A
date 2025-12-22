@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
 import 'package:portfolio/features/home/data/model/project_model.dart';
@@ -30,7 +31,7 @@ class ProjectItem extends StatelessWidget {
         children: [
           // Background image
           Positioned.fill(
-            child: Image.asset(projectModel.projectImage, fit: BoxFit.fill),
+            child: Image.asset(projectModel.projectImage, fit: BoxFit.cover),
           ),
 
           // Gradient overlay
@@ -79,7 +80,14 @@ class ProjectItem extends StatelessWidget {
                           ],
                         ),
                       ),
-                      ProjectBtn(onTap: () {}),
+                      ProjectBtn(
+                        onTap: () {
+                          context.go(
+                            '/projects/${handleTwoWordInLink(projectModel.projectName)}',
+                            extra: projectModel,
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -89,5 +97,10 @@ class ProjectItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  // handle two word in link
+  String handleTwoWordInLink(String name) {
+    return name.replaceAll(' ', '-');
   }
 }

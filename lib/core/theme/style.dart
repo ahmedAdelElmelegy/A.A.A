@@ -8,6 +8,11 @@ class AppStyle {
     fontWeight: FontWeight.bold,
     fontFamily: 'Urbanist',
   );
+  static TextStyle f24UrbanistBold = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Urbanist',
+  );
   // 20
   static TextStyle f20UrbanistSemibold = TextStyle(
     fontSize: 20,
