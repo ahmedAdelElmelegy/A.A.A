@@ -6,6 +6,12 @@ import 'package:portfolio/features/home/presentation/screens/home_screen.dart';
 import 'package:portfolio/features/project/presentation/view/screens/project.dart';
 
 final router = GoRouter(
+  redirect: (context, state) {
+    if (state.extra == null) {
+      return Routes.home;
+    }
+    return null;
+  },
   routes: [
     GoRoute(
       path: Routes.home,

@@ -97,6 +97,9 @@ class AppConstants {
         'Multi-language support',
         'Clean architecture & scalable code',
       ],
+      applink:
+          'https://drive.google.com/drive/folders/1YXjEpk_U1PD__ukwibCRFM0QAIcBbsxR?usp=drive_link',
+      githupLink: 'https://github.com/ahmedAdelElmelegy/circle',
     ),
 
     ProjectModel(
@@ -132,10 +135,11 @@ class AppConstants {
         AppImages.smImageProject35,
         AppImages.smImageProject36,
       ],
+      applink: 'https://github.com/ahmedAdelElmelegy/nurse-bot',
     ),
 
     ProjectModel(
-      projectName: 'El Huda',
+      projectName: 'Al Huda',
       projectDescription:
           'An Islamic guidance application providing accurate prayer times, Quran access, reminders, and location-based services.',
       projectImage: AppImages.project3,
@@ -192,10 +196,14 @@ class AppConstants {
         AppImages.smImageProjectQ42,
         AppImages.smImageProjectQ43,
       ],
+      applink:
+          'https://drive.google.com/drive/folders/1_kftNvH6CxjfBcckoT3TaeMhODjR5wgc?usp=drive_link',
+
+      githupLink: 'https://github.com/ahmedAdelElmelegy/Al-Huda',
     ),
 
     ProjectModel(
-      projectName: 'BMI Calculator',
+      projectName: 'BMI Tracker',
       projectDescription:
           'A lightweight BMI calculator app that calculates body mass index based on user input with a clean UI.',
       projectImage: AppImages.project4,
@@ -214,6 +222,10 @@ class AppConstants {
         'MVVM Architecture & maintainable code',
       ],
       smImages: [AppImages.smImageProject41, AppImages.smImageProject42],
+      applink:
+          'https://drive.google.com/drive/folders/1DGskNTvXAF3rn5iAlbhXPP6_fDmHMcHc?usp=drive_link',
+
+      githupLink: 'https://github.com/ahmedAdelElmelegy/Bmi_calculator',
     ),
   ];
 }

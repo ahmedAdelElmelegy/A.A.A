@@ -17,7 +17,7 @@ class ProjectScreen extends StatelessWidget {
             ProjectHeader(projectModel: projectModel),
             SizedBox(height: 24),
             ProjectBody(projectModel: projectModel),
-            SizedBox(height: 24),
+            SizedBox(height: 36),
             FooterSection(),
           ],
         ),

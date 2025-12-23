@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/core/function/url_function.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
 import 'package:portfolio/core/utils/app_utils.dart';
@@ -20,13 +21,7 @@ class ProjectHeader extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
         color: Colors.white,
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.black.withValues(alpha: 0.1),
-        //     blurRadius: 30,
-        //     offset: const Offset(4, 4),
-        //   ),
-        // ],
+
         border: Border(
           bottom: BorderSide(color: Colors.black.withValues(alpha: 0.1)),
         ),
@@ -41,25 +36,26 @@ class ProjectHeader extends StatelessWidget {
           Text(projectModel.projectName, style: AppStyle.f24UrbanistBold),
           Spacer(),
           InkWell(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(Icons.play_arrow, color: ColorManager.primary),
-                  const SizedBox(width: 8),
-                  Text(
-                    'Try the App',
-                    style: AppStyle.f16UrbanistMeduim.copyWith(
-                      color: ColorManager.primary,
-                    ),
-                  ),
-                ],
-              ),
+            borderRadius: BorderRadius.circular(8),
+            splashColor: ColorManager.primary,
+            onTap: () {
+              openLink(projectModel.applink);
+            },
+            child: Row(
+              children: [
+                Icon(Icons.play_arrow, color: ColorManager.primary),
+                const SizedBox(width: 8),
+                Text('Try the App', style: AppStyle.f16UrbanistMeduim),
+              ],
             ),
           ),
-          SizedBox(width: 16),
-          IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.github)),
+          const SizedBox(width: 16),
+          IconButton(
+            onPressed: () {
+              openLink(projectModel.githupLink);
+            },
+            icon: Icon(FontAwesomeIcons.github),
+          ),
         ],
       ),
     );
