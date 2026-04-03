@@ -15,9 +15,7 @@ class AboutImageSection extends StatelessWidget {
         children: [
           Text(
             'About Me',
-            style: AppStyle.h2.copyWith(
-              color: ColorManager.primary,
-            ),
+            style: AppStyle.h2.copyWith(color: ColorManager.primary),
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
@@ -29,7 +27,7 @@ class AboutImageSection extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.lg),
           Text(
-            "Hi, I’m Ahmed — a passionate Flutter Developer with over 5 Months "
+            "Hi, I’m Ahmed — a passionate Flutter Developer with over 1 Year "
             "of experience building beautiful, fast, and user-friendly mobile "
             "and web applications. I love turning ideas into high-quality products "
             "using clean architecture, animations, and modern UI principles",
