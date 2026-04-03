@@ -12,20 +12,20 @@ class MyProjects extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: AppUtils.isDesktop(context) ? 80 : 16,
+        horizontal: AppUtils.isDesktop(context) ? AppSpacing.space3xl : AppSpacing.sm,
       ),
       child: Column(
         children: [
           Text(
             'My Projects',
-            style: AppStyle.f35UrbanistBold.copyWith(
+            style: AppStyle.h2.copyWith(
               color: ColorManager.primary,
             ),
           ),
-          SizedBox(height: 100),
+          const SizedBox(height: AppSpacing.xl),
           Wrap(
-            spacing: 24,
-            runSpacing: 24,
+            spacing: AppSpacing.md,
+            runSpacing: AppSpacing.md,
             children: List.generate(
               AppConstants.projectList.length,
               (index) =>

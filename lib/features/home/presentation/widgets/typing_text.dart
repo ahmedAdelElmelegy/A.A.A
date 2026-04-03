@@ -8,21 +8,26 @@ class TypingText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
-      child: DefaultTextStyle(
-        style: AppStyle.f30UrbanistBold.copyWith(color: ColorManager.primary),
-        child: AnimatedTextKit(
-          repeatForever: true,
-          animatedTexts: [
-            TypewriterAnimatedText(
-              'Flutter Developer',
-              speed: Duration(milliseconds: 80),
-            ),
-            TypewriterAnimatedText(
-              'UI/UX Designer',
-              speed: Duration(milliseconds: 80),
-            ),
-          ],
+      height: 48,
+      child: Center(
+        child: DefaultTextStyle(
+          style: AppStyle.h2.copyWith(
+            color: ColorManager.primary,
+            height: 1.0,
+          ),
+          child: AnimatedTextKit(
+            repeatForever: true,
+            animatedTexts: [
+              TypewriterAnimatedText(
+                'Flutter Developer',
+                speed: const Duration(milliseconds: 80),
+              ),
+              TypewriterAnimatedText(
+                'UI/UX Designer',
+                speed: const Duration(milliseconds: 80),
+              ),
+            ],
+          ),
         ),
       ),
     );

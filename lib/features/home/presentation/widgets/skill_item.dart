@@ -8,16 +8,22 @@ class SkillItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isFlutter =
+        title.toLowerCase().contains('flutter') || title.toLowerCase().contains('dart');
+    final Color baseColor = isFlutter ? ColorManager.accent : ColorManager.primary;
+
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        color: ColorManager.primary.withValues(alpha: .15),
-        border: Border.all(color: ColorManager.primary),
+        color: baseColor.withValues(alpha: .1),
+        border: Border.all(color: baseColor.withValues(alpha: 0.5)),
       ),
       child: Text(
         title,
-        style: AppStyle.f16UrbanistMeduim.copyWith(color: ColorManager.primary),
+        style: AppStyle.bodyBold.copyWith(
+          color: isFlutter ? ColorManager.accentDark : ColorManager.secondary,
+        ),
       ),
     );
   }

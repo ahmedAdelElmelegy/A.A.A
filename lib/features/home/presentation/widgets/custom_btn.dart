@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/function/url_function.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
 
 class CustomBtn extends StatefulWidget {
-  const CustomBtn({super.key});
+  final String label;
+  final VoidCallback? onPressed;
+  const CustomBtn({super.key, this.label = 'View My Work', this.onPressed});
 
   @override
   State<CustomBtn> createState() => _CustomBtnState();
@@ -15,22 +16,28 @@ class _CustomBtnState extends State<CustomBtn> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 56,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: isHover
-              ? ColorManager.secondary
-              : ColorManager.primary,
+              ? ColorManager.accentDark
+              : ColorManager.accent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          elevation: isHover ? 4 : 2,
         ),
         onHover: (value) => setState(() {
           isHover = value;
         }),
-        onPressed: () {
-          openLink(
-            'https://drive.google.com/open?id=1Mu7P8yz7dMPyuRhgJqMoxLjoTIiPZKPV&usp=drive_copy',
-          );
-        },
-        child: Text('Download CV', style: AppStyle.f14UrbanistboldWhite),
+        onPressed: widget.onPressed,
+        child: Text(
+          widget.label,
+          style: AppStyle.caption.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

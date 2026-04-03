@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_utils.dart';
 import 'package:portfolio/features/home/presentation/widgets/hero_headline.dart';
 import 'package:portfolio/features/home/presentation/widgets/profile_shape.dart';
 
 class HeroSection extends StatefulWidget {
-  const HeroSection({super.key});
+  final VoidCallback? onViewWorkPressed;
+  const HeroSection({super.key, this.onViewWorkPressed});
 
   @override
   State<HeroSection> createState() => _HeroSectionState();
@@ -52,24 +54,23 @@ class _HeroSectionState extends State<HeroSection>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppUtils.isDesktop(context) ? AppSpacing.space3xl : AppSpacing.md,
+      ),
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         alignment: WrapAlignment.center,
-        spacing: 150,
-        runSpacing: 50,
+        spacing: AppSpacing.space3xl,
+        runSpacing: AppSpacing.xl,
         children: [
           FadeTransition(
             opacity: fadeAnim,
             child: SlideTransition(
               position: slideAnim,
-              child: const HeroHeading(),
+              child: HeroHeading(onViewWorkPressed: widget.onViewWorkPressed),
             ),
           ),
-
           ProfileShape(fadeAnim: fadeAnim, scaleAnim: scaleAnim),
-
-          const SizedBox(height: 32),
         ],
       ),
     );

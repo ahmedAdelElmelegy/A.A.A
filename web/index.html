@@ -23,16 +23,116 @@
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="portfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="apple-mobile-web-app-title" content="Ahmed Adel">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/Icon-152.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/Icon-192.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/Icon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/Icon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="icons/Icon-48.png">
+  <link rel="icon" type="image/png" sizes="72x72" href="icons/Icon-72.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="icons/Icon-96.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="icons/Icon-128.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="icons/Icon-144.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" sizes="384x384" href="icons/Icon-384.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/Icon-512.png">
 
   <title>portfolio</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      background-color: #FFFFFF; /* White mode background */
+      margin: 0;
+      overflow: hidden; /* Prevent scrolling during load */
+    }
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      font-family: monospace;
+      transition: opacity 0.5s ease-out;
+    }
+    .app-logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 32px;
+      object-fit: contain;
+      animation: float 3s ease-in-out infinite;
+    }
+    .progress-track {
+      width: 200px;
+      height: 4px;
+      background-color: rgba(0, 0, 0, 0.08); /* Darker track for light mode */
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .progress-bar {
+      width: 40%;
+      height: 100%;
+      background-color: #3B82F6; /* Premium branding blue */
+      border-radius: 4px;
+      animation: indeterminate 1.5s infinite ease-in-out;
+    }
+    .loading-text {
+      color: #3B82F6;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes indeterminate {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(250%); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
 </head>
 <body>
+  <div id="loading-screen">
+    <img class="app-logo" src="assets/images/logo.png" alt="Ahmed Adel Portfolio Logo" />
+    <div class="progress-track">
+      <div class="progress-bar"></div>
+    </div>
+    <div class="loading-text">LOADING...</div>
+  </div>
+
+  <script>
+    // Listen for the first frame event dispatched by Flutter
+    window.addEventListener('flutter-first-frame', function() {
+      var loader = document.getElementById('loading-screen');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(function() {
+          loader.remove();
+          document.body.style.overflow = ''; // Restore scrolling behavior
+        }, 500); // 0.5s fade out
+      }
+    });
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

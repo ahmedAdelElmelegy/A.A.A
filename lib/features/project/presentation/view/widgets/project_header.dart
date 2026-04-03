@@ -15,46 +15,45 @@ class ProjectHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: 16,
-        horizontal: AppUtils.isDesktop(context) ? 80 : 16,
+        vertical: AppSpacing.md,
+        horizontal: AppUtils.isDesktop(context) ? AppSpacing.space3xl : AppSpacing.md,
       ),
-      margin: const EdgeInsets.only(bottom: 24),
+      margin: const EdgeInsets.only(bottom: AppSpacing.lg),
       decoration: BoxDecoration(
-        color: Colors.white,
-
+        color: ColorManager.background,
         border: Border(
-          bottom: BorderSide(color: Colors.black.withValues(alpha: 0.1)),
+          bottom: BorderSide(color: ColorManager.border.withValues(alpha: 0.5)),
         ),
       ),
       child: Row(
         children: [
           IconButton(
             onPressed: () => Router.neglect(context, () => context.pop()),
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            icon: Icon(Icons.arrow_back_rounded, color: ColorManager.textPrimary),
+            tooltip: 'Go Back',
           ),
-          const SizedBox(width: 24),
-          Text(projectModel.projectName, style: AppStyle.f24UrbanistBold),
-          Spacer(),
-          InkWell(
-            borderRadius: BorderRadius.circular(8),
-            splashColor: ColorManager.primary,
-            onTap: () {
-              openLink(projectModel.applink);
-            },
-            child: Row(
-              children: [
-                Icon(Icons.play_arrow, color: ColorManager.primary),
-                const SizedBox(width: 8),
-                Text('Try the App', style: AppStyle.f16UrbanistMeduim),
-              ],
+          const SizedBox(width: AppSpacing.md),
+          Text(
+            projectModel.projectName,
+            style: AppStyle.h4.copyWith(color: ColorManager.textPrimary),
+          ),
+          const Spacer(),
+          TextButton.icon(
+            onPressed: () => openLink(projectModel.applink),
+            style: TextButton.styleFrom(
+              foregroundColor: ColorManager.primary,
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+              shape: RoundedRectangleBorder(borderRadius: AppRadius.radiusSm),
             ),
+            icon: const Icon(Icons.play_circle_outline_rounded),
+            label: Text('Try App', style: AppStyle.bodyBold),
           ),
-          const SizedBox(width: 16),
+          if (AppUtils.isDesktop(context)) const SizedBox(width: AppSpacing.sm),
           IconButton(
-            onPressed: () {
-              openLink(projectModel.githupLink);
-            },
-            icon: Icon(FontAwesomeIcons.github),
+            onPressed: () => openLink(projectModel.githupLink),
+            icon: const Icon(FontAwesomeIcons.github),
+            color: ColorManager.textSecondary,
+            tooltip: 'GitHub Repository',
           ),
         ],
       ),

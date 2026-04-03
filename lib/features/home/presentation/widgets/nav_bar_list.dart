@@ -4,34 +4,48 @@ import 'package:portfolio/features/home/presentation/widgets/nav_bar_item.dart';
 
 class NavBarList extends StatelessWidget {
   final ScrollController pageController;
-  const NavBarList({super.key, required this.pageController});
+  final List<VoidCallback>? onSectionTaps;
+
+  const NavBarList({
+    super.key,
+    required this.pageController,
+    this.onSectionTaps,
+  });
 
   static const List<String> navBarItems = [
     'Home',
     'About',
-    'My Work Process',
+    'Process',
     'Skills',
     'Projects',
     'Contact',
   ];
+
   @override
   Widget build(BuildContext context) {
     return AppUtils.isDesktop(context)
         ? Row(
+            mainAxisSize: MainAxisSize.min,
             children: List.generate(
               navBarItems.length,
               (index) => Padding(
                 padding: EdgeInsets.only(
-                  right: index == navBarItems.length - 1 ? 0 : 16,
+                  right: index == navBarItems.length - 1 ? 0 : AppSpacing.md,
                 ),
                 child: NavBarItem(
                   title: navBarItems[index],
                   onTap: () {
-                    pageController.animateTo(
-                      index * 750.0,
-                      duration: const Duration(milliseconds: 1000),
-                      curve: Curves.easeInOut,
-                    );
+                    if (onSectionTaps != null && index < onSectionTaps!.length) {
+                      onSectionTaps![index]();
+                    } else {
+                      // Fallback for contact or if taps aren't provided
+                      final offset = index * 800.0;
+                      pageController.animateTo(
+                        offset,
+                        duration: const Duration(milliseconds: 800),
+                        curve: Curves.easeInOutCubic,
+                      );
+                    }
                   },
                 ),
               ),
@@ -43,40 +57,24 @@ class NavBarList extends StatelessWidget {
               navBarItems.length,
               (index) => Padding(
                 padding: EdgeInsets.only(
-                  bottom: index == navBarItems.length - 1 ? 0 : 16,
+                  bottom: index == navBarItems.length - 1 ? 0 : AppSpacing.md,
                 ),
                 child: NavBarItem(
                   title: navBarItems[index],
                   onTap: () {
-                    pageController.animateTo(
-                      index * getScrollOffset(index),
-                      duration: const Duration(milliseconds: 1000),
-                      curve: Curves.easeInOut,
-                    );
+                    if (onSectionTaps != null && index < onSectionTaps!.length) {
+                      onSectionTaps![index]();
+                    } else {
+                      pageController.animateTo(
+                        index * 1000.0, // rough estimate for mobile
+                        duration: const Duration(milliseconds: 800),
+                        curve: Curves.easeInOutCubic,
+                      );
+                    }
                   },
                 ),
               ),
             ),
           );
-  }
-
-  // scrooling
-  double getScrollOffset(int index) {
-    switch (index) {
-      case 0:
-        return 0;
-      case 1:
-        return 1200;
-      case 2:
-        return 1500;
-      case 3:
-        return 1550;
-      case 4:
-        return 1400;
-      case 5:
-        return 2000;
-      default:
-        return 0;
-    }
   }
 }

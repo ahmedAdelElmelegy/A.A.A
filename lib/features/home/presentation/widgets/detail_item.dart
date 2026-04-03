@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
+import 'package:portfolio/core/utils/app_utils.dart';
 
 class DetailItem extends StatelessWidget {
   final String title, subtitle;
@@ -17,24 +18,29 @@ class DetailItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: AppStyle.f22UrbanistBold),
-        SizedBox(height: 8),
+        Text(
+          title,
+          style: AppStyle.bodyBold.copyWith(color: ColorManager.textPrimary),
+        ),
+        const SizedBox(height: AppSpacing.xs),
         Text(
           subtitle,
-          style: AppStyle.f16UrbanistBold.copyWith(
+          style: AppStyle.caption.copyWith(
             fontStyle: FontStyle.italic,
-            color: ColorManager.darkGrey,
+            color: ColorManager.secondary,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: 24),
-        content != null
-            ? Text(
-                content!,
-                style: AppStyle.f14Urbanistbold.copyWith(
-                  color: ColorManager.darkGrey,
-                ),
-              )
-            : SizedBox(),
+        if (content != null) ...[
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            content!,
+            style: AppStyle.body.copyWith(
+              color: ColorManager.textSecondary,
+              height: 1.5,
+            ),
+          ),
+        ],
       ],
     );
   }

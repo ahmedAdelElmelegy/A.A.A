@@ -12,23 +12,25 @@ class MyWorkProcess extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: AppUtils.isDesktop(context) ? 80 : 16,
+        horizontal: AppUtils.isDesktop(context) ? AppSpacing.space3xl : AppSpacing.sm,
       ),
       child: Column(
         children: [
           Text(
             'My Work Process',
-            style: AppStyle.f35UrbanistBold.copyWith(
+            style: AppStyle.h2.copyWith(
               color: ColorManager.primary,
             ),
           ),
-          SizedBox(height: 70),
+          const SizedBox(height: AppSpacing.xl),
           Wrap(
-            spacing: 24,
-            runSpacing: 24,
+            spacing: AppSpacing.md,
+            runSpacing: AppSpacing.md,
+            alignment: WrapAlignment.center,
             children: List.generate(
               AppConstants.myWorkProcessList.length,
               (index) => WorkProcessItem(
+                index: index,
                 icon: AppConstants.myWorkProcessList[index].icon,
                 title: AppConstants.myWorkProcessList[index].title,
                 description: AppConstants.myWorkProcessList[index].description,

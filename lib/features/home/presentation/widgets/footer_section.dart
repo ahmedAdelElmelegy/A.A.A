@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/core/function/url_function.dart';
+import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
-import 'package:portfolio/features/home/presentation/widgets/fotter_icon.dart';
+import 'package:portfolio/core/utils/app_utils.dart';
+import 'package:portfolio/features/home/presentation/widgets/footer_icon.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
@@ -10,53 +12,56 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
+      padding: EdgeInsets.symmetric(
+        vertical: AppSpacing.space3xl,
+        horizontal: AppUtils.isDesktop(context) ? AppSpacing.space3xl : AppSpacing.md,
+      ),
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Color(0xff1E40AF), Color(0xFF3B82F6)],
+          colors: [ColorManager.secondary, ColorManager.primary],
         ),
       ),
       child: Column(
         children: [
           Text(
             'Get in Touch',
-            style: AppStyle.f35UrbanistBold.copyWith(
+            style: AppStyle.h2.copyWith(
               color: Colors.white,
               letterSpacing: 1.2,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: AppSpacing.sm),
           Text(
             'Feel free to reach out anytime — I’m always open to new projects.',
             textAlign: TextAlign.center,
-            style: AppStyle.f16UrbanistBold.copyWith(
-              color: Colors.white.withValues(alpha: 0.85),
-              height: 1.5,
+            style: AppStyle.bodyBold.copyWith(
+              color: Colors.white.withValues(alpha: 0.9),
+              height: 1.6,
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: AppSpacing.xl),
 
           // Line Separator
           Container(
             width: 80,
-            height: 1,
+            height: 2,
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.7),
-              borderRadius: BorderRadius.circular(20),
+              color: Colors.white.withValues(alpha: 0.5),
+              borderRadius: AppRadius.radiusFull,
             ),
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: AppSpacing.xl),
 
           Wrap(
             direction: Axis.horizontal,
             alignment: WrapAlignment.center,
-            spacing: 16,
+            spacing: AppSpacing.md,
             children: [
-              FotterIcon(
+              FooterIcon(
                 icon: FontAwesomeIcons.envelope,
                 onTap: () {
                   showCopyNumberDialog(
@@ -66,7 +71,7 @@ class FooterSection extends StatelessWidget {
                   );
                 },
               ),
-              FotterIcon(
+              FooterIcon(
                 icon: FontAwesomeIcons.phone,
                 onTap: () {
                   showCopyNumberDialog(
@@ -76,7 +81,7 @@ class FooterSection extends StatelessWidget {
                   );
                 },
               ),
-              FotterIcon(
+              FooterIcon(
                 icon: FontAwesomeIcons.linkedin,
                 onTap: () {
                   openLink(
@@ -84,7 +89,7 @@ class FooterSection extends StatelessWidget {
                   );
                 },
               ),
-              FotterIcon(
+              FooterIcon(
                 icon: FontAwesomeIcons.github,
                 onTap: () {
                   openLink('https://github.com/ahmedAdelElmelegy');
@@ -93,12 +98,12 @@ class FooterSection extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 32),
+          const SizedBox(height: AppSpacing.space3xl),
 
           Text(
-            '© 2025 Ahmed Adel. All Rights Reserved.',
-            style: AppStyle.f16UrbanistMeduim.copyWith(
-              color: Colors.white.withValues(alpha: 0.7),
+            '© ${DateTime.now().year} Ahmed Adel. All Rights Reserved.',
+            style: AppStyle.body.copyWith(
+              color: Colors.white.withValues(alpha: 0.8),
             ),
           ),
         ],

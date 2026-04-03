@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/utils/app_utils.dart';
 
 class ProfileShape extends StatelessWidget {
   const ProfileShape({
@@ -20,8 +21,9 @@ class ProfileShape extends StatelessWidget {
           height: 400,
           width: 400,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            image: DecorationImage(
+            borderRadius: AppRadius.radiusLg,
+            boxShadow: AppShadow.subtle,
+            image: const DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage('assets/images/profile.png'),
             ),

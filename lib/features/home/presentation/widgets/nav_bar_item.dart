@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/theme/color.dart';
 import 'package:portfolio/core/theme/style.dart';
+import 'package:portfolio/core/utils/app_utils.dart';
 
 class NavBarItem extends StatefulWidget {
   final String title;
@@ -23,26 +24,35 @@ class NavBarItemState extends State<NavBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onHover: (value) => setState(() {
-        isHovering = value;
-      }),
-      onTap: widget.onTap,
+    final bool isSelected = widget.isActive || isHovering;
 
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-
-        decoration: BoxDecoration(
-          color: isHovering
-              ? ColorManager.primary.withValues(alpha: .8)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Text(
-          widget.title,
-          style: AppStyle.f16UrbanistMeduim.copyWith(
-            color: isHovering ? ColorManager.white : ColorManager.black,
+    return MouseRegion(
+      onEnter: (_) => setState(() => isHovering = true),
+      onExit: (_) => setState(() => isHovering = false),
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          padding: const EdgeInsets.symmetric(
+            vertical: AppSpacing.xs,
+            horizontal: AppSpacing.md,
+          ),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? ColorManager.primary.withValues(alpha: 0.08)
+                : Colors.transparent,
+            borderRadius: AppRadius.radiusSm,
+          ),
+          child: AnimatedDefaultTextStyle(
+            duration: const Duration(milliseconds: 250),
+            style: AppStyle.bodyBold.copyWith(
+              color: isSelected
+                  ? ColorManager.primary
+                  : ColorManager.textPrimary.withValues(alpha: 0.8),
+              letterSpacing: 0.5,
+            ),
+            child: Text(widget.title),
           ),
         ),
       ),
